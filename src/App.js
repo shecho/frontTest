@@ -1,27 +1,37 @@
 import React, { useEffect, useState } from "react";
-
+import Nav from './components/nav/nav';
 import "./App.css";
 
 const App = () => {
-  const [respuesta, setRespuesta] = useState({});
+  const [cars, setCars] = useState([]);
 
   useEffect(() => {
-    saludo();
+    getCars();
   }, []);
 
-  const saludo = async () => {
-    let url = "http://127.0.0.1:8000/testing/";
+  const getCars = async () => {
+    let url = "http://127.0.0.1:4000/car";
     let response = await fetch(url);
     let res = await response.json();
-    console.log(res)
-    setRespuesta(res);
+    let carlist = res.cars
+    setCars(() => carlist);
   };
-  
+
 
   return (
     <div className="App">
-      {respuesta.message}
-     
+      <div className="navigation">
+        <Nav/>
+      </div>
+      { cars.map((car, index) =>
+      (
+        <div key={car._id} className='card'>
+          <p>{car.marca}</p>
+          <p>{car.fabrication_time}</p>
+        </div>
+      )
+      )}
+
     </div>
   );
 };
