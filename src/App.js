@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Nav from './components/nav/nav';
+import Home from './components//home/home';
+import Car from './components/cars/car';
 import "./App.css";
 
 const App = () => {
@@ -23,15 +25,16 @@ const App = () => {
       <div className="navigation">
         <Nav/>
       </div>
+      <div className="">
+        <Home/>
+      </div>
+      <div className="row m-2 p-3">
       { cars.map((car, index) =>
       (
-        <div key={car._id} className='card'>
-          <p>{car.marca}</p>
-          <p>{car.fabrication_time}</p>
-        </div>
+          <Car key={car._id} car={car}/>
       )
       )}
-
+      </div>
     </div>
   );
 };
