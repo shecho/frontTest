@@ -1,0 +1,29 @@
+
+.sidebar{
+    width: 20vw;
+    height: 80vh;
+}
+nav-links {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    ;
+    margin-left: auto;
+  }
+  .nav-links li {
+    list-style: none;
+    padding: 1rem;
+    color: #ddd;
+    text-decoration: none;
+    transition: all .2s ease;
+    ;
+  }
+  
+  .nav-links li:hover {
+    color: #fff;
+    background: rgba(0, 0, 0, .6);
+    text-decoration: none;
+  }
