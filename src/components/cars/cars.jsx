@@ -3,7 +3,8 @@ import Car from "./car";
 import Sidebar from "../sidebar/sidebar";
 
 const Cars = () => {
-  const [cars, setCars] = useState([]);
+  let [cars, setCars] = useState([]);
+  let [updateData, setUpdateData] = useState({});
   useEffect(() => {
     getCars();
   }, []);
@@ -16,6 +17,11 @@ const Cars = () => {
 
     setCars(() => carlist);
   };
+
+  const handleUpdateInput = (e) => {
+    setUpdateData({ ...updateData, [e.target.name]: e.target.value });
+    console.log(setUpdateData);
+  };
   return (
     <>
       <div className="row m-2 p-3">
@@ -23,11 +29,10 @@ const Cars = () => {
           <Sidebar />
         </div>
         {cars.map((car) => (
-          <Car key={car._id} car={car} />
+          <Car key={car._id} car={car} handleUpdateInput={handleUpdateInput} />
         ))}
       </div>
     </>
   );
 };
 export default Cars;
-
